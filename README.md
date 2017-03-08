@@ -1,4 +1,4 @@
-<text-align: "center"><h1>My Professional Pratice In It Application readme Draft 1</text-align>
+<h1>My Professional Pratice In It Application readme Draft 1</h1>
 ##Table of Contents:
 ### 1.Specs
 ### 2. Software and Development tools used
