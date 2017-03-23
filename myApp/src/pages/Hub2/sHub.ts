@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 
+declare var google;
+
 @Component({
   selector: 'page-sHub',
   templateUrl: 'sHub.html'
@@ -19,7 +21,7 @@ export class sHubPage {
 
   
   initmap(){
-    let latlng = new google.maps.latLng(Geolocation);
+    let latlng = new google.maps.LatLng(53.278640, -9.010414);
 
     let mapOptions = {
       center: latlng,
