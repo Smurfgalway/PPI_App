@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation} from 'ionic-native';
+ import { MarkerOptions, Marker} from '@ionic-native/google-maps';
 
 declare var google;
 
@@ -25,14 +26,14 @@ export class sHubPage {
     Geolocation.getCurrentPosition().then((position) => {
  
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
+    
     let mapOptions = {
       center: latLng,
       zoom: 17,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
-   
-    
+
+           
   
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     });
