@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>Simple Map</title>
+  <title>Clinic map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
@@ -37,13 +37,15 @@
               lng: position.coords.longitude
             };
                 infowindow = new google.maps.InfoWindow();
+                //function for the nearby search using the places service in the google maps api
             var service = new google.maps.places.PlacesService(map);
             service.nearbySearch({
               location: pos,
-              radius: 1000,
-              type: ["Pharmacy"]
+              radius: 1000, //radius distance is measured in meters by default
+              type: ["doctor"] // key word for the nearby search
             }, callback);
 
+            //your starting location marked by a info window telling you where you are
             infoWindow.setPosition(pos);
             infoWindow.setContent('You are here');
             infoWindow.open(map);
@@ -58,14 +60,14 @@
           }
         }
       }
-
+      // function creates markers of locations matching your nearby search keyword within the radius specified
       function createMarker(place) {
         var placeLoc = place.geometry.location;
         var marker = new google.maps.Marker({
           map: map,
           position: place.geometry.location
         });
-
+        //when clicked gives the information of the place on the marker
         google.maps.event.addListener(marker, 'click', function() {
           infowindow.setContent(place.name);
           infowindow.open(map, this);
