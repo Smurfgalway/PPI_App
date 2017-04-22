@@ -29,7 +29,6 @@
           zoom: 16
         });
         infoWindow = new google.maps.InfoWindow;
-
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
@@ -39,12 +38,13 @@
                 infowindow = new google.maps.InfoWindow();
                 //function for the nearby search using the places service in the google maps api
             var service = new google.maps.places.PlacesService(map);
+
+
             service.nearbySearch({
               location: pos,
               radius: 1000, //radius distance is measured in meters by default
-              type: ["doctor"] // key word for the nearby search
+              type: ["store"] // key word for the nearby search
             }, callback);
-
             //your starting location marked by a info window telling you where you are
             infoWindow.setPosition(pos);
             infoWindow.setContent('You are here');
