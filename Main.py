@@ -12,6 +12,18 @@ def name():
 def map():
     return render_template('Main.html')
 
+@app.route("/map1")
+def map1():
+    return render_template('Map1.html')
+
+@app.route("/map2")
+def map2():
+    return render_template('Map2.html')
+
+@app.route("/map3")
+def map3():
+    return render_template('Map3.html')
+
 @app.route("/mental")
 def mental():
     return render_template('Mental.html')
