@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Clinic map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 80%;
+        width: 80%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map, infoWindow;
+      //intialises the map with set values
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          //hard coded longitude and latitude that then will be changed by the if statement
+          center: {lat: 53.2786241, lng: -9.0127533},
+          //the set zoom of the map when it loads
+          zoom: 15
+        });
+
+        infoWindow = new google.maps.InfoWindow;
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+                infowindow = new google.maps.InfoWindow();
+            var sexualHealth = ["doctor"];
+
+           
+            
+                //function for the nearby search using the places service in the google maps api
+            var service = new google.maps.places.PlacesService(map);
+            service.nearbySearch({
+              location: pos,
+              radius: 10000, //radius distance is measured in meters by default
+              type: sexualHealth
+            }, callback);
+            //your starting location marked by a info window telling you where you are
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('You are here');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          });
+        } 
+      }
+          function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+        }
+      }
+      // function creates markers of locations matching your nearby search keyword within the radius specified
+      function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+        //when clicked gives the information of the place on the marker
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name);
+
+          infowindow.open(map, this);
+        });
+      }
+    </script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZkyNkSIGlMles44nRDZ7bx5urc2PzYMU&libraries=geometry&libraries=places&callback=initMap" async defer>
+    </script>
+       <form action="/">
+          <button type="submit" class="w3-round-large w3-blue w3-button w3-block" > Go home </button>
+        </form>
+  </body>
+</html>
