@@ -24,6 +24,10 @@ def map2():
 def map3():
     return render_template('Map3.html')
 
+@app.route("/map4")
+def map4():
+    return render_template('Map4.html')
+
 @app.route("/mental")
 def mental():
     return render_template('Mental.html')
