@@ -13,14 +13,17 @@
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
-        height: 80%;
-        width: 80%;
+        height: 100%;
+        width: 100%;
         margin: 0;
         padding: 0;
       }
     </style>
   </head>
   <body>
+    <header class="w3-container w3-teal w3-round-large">
+    <h1>Find Condoms</h1>
+    </header> 
     <div id="map"></div>
     <script>
       var map, infoWindow;
@@ -44,7 +47,7 @@
             
             //the variable for my keyword for my nearby places search
             var condoms = ["supermarket"];
-
+            
             // draws a circle around a set position in this case the users location
             var myCircle = new google.maps.Circle({
             strokeColor: 'Blue',
@@ -56,7 +59,6 @@
             radius: 10,
             center: pos
             });
-            
                 //function for the nearby search using the places service in the google maps api
             var service = new google.maps.places.PlacesService(map);
             service.nearbySearch({
@@ -89,9 +91,11 @@
         //when clicked gives the information of the place on the marker
         google.maps.event.addListener(marker, 'click', function() {
           infowindow.setContent(place.name);
-
-          infowindow.open(map, this);
+          infowindow.open(map, this)
         });
+        var center = map.getCenter();
+        var markerLatLng = marker.getPosition();
+        var distance = google.maps.geometry.spherical.computeDistanceBetween(center, markerLatLng);
       }
     </script>
      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZkyNkSIGlMles44nRDZ7bx5urc2PzYMU&libraries=geometry&libraries=places&callback=initMap" async defer>
@@ -102,5 +106,8 @@
        <form action="/">
           <button type="submit" class="w3-round-large w3-blue w3-button w3-block" > Go home </button>
         </form>
+           <footer  class="w3-container w3-teal w3-round-large w3-right-align"> 
+        <h5>Map/h5>
+    </footer>
   </body>
 </html>
