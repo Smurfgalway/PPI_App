@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>Clinic map</title>
+  <title>Clinic Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -23,6 +23,7 @@
   <body>
     <div id="map"></div>
     <script>
+      
       var map, infoWindow;
       //intialises the map with set values
       function initMap() {
@@ -30,7 +31,7 @@
           //hard coded longitude and latitude that then will be changed by the if statement
           center: {lat: 53.2786241, lng: -9.0127533},
           //the set zoom of the map when it loads
-          zoom: 15
+          zoom: 14
         });
 
         infoWindow = new google.maps.InfoWindow;
@@ -41,8 +42,21 @@
               lng: position.coords.longitude
             };
                 infowindow = new google.maps.InfoWindow();
-            var sexualHealth = ["doctor"];
+            
+            //the variable for my keyword for my nearby places search
+            var sexualHealth = ["GP"];
 
+            // draws a circle around a set position in this case the users location
+            var myCircle = new google.maps.Circle({
+            strokeColor: 'Blue',
+            strokeOpacity: 1,
+            strokeWeight: 2,
+            fillColor: 'Blue',
+            fillOpacity: 0.35,
+            map: map,
+            radius: 10,
+            center: pos
+            });
            
             
                 //function for the nearby search using the places service in the google maps api
@@ -50,7 +64,7 @@
             service.nearbySearch({
               location: pos,
               radius: 10000, //radius distance is measured in meters by default
-              type: sexualHealth
+              keyword: sexualHealth // word for searching the locations
             }, callback);
             //your starting location marked by a info window telling you where you are
             infoWindow.setPosition(pos);
@@ -63,7 +77,7 @@
           function callback(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
-            createMarker(results[i]);
+            createMarker(results[i]); 
           }
         }
       }
@@ -77,13 +91,15 @@
         //when clicked gives the information of the place on the marker
         google.maps.event.addListener(marker, 'click', function() {
           infowindow.setContent(place.name);
-
           infowindow.open(map, this);
         });
       }
     </script>
      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZkyNkSIGlMles44nRDZ7bx5urc2PzYMU&libraries=geometry&libraries=places&callback=initMap" async defer>
     </script>
+     <form action="/map">
+          <button type="submit" class="w3-round-large w3-blue w3-button w3-block" > Go back to map selection </button>
+        </form>
        <form action="/">
           <button type="submit" class="w3-round-large w3-blue w3-button w3-block" > Go home </button>
         </form>
