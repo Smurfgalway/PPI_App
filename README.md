@@ -14,7 +14,7 @@ This project is a Geolocation and Information app. Within a 6 mile/10 KM/ 10000 
 
 ### <a href="https://github.com/Smurfgalway/PPI_App/wiki/Conclusion-on-Project-and-Overall-Experience"> Conculsion on Project and Overall Experience  </a>
 
-### <a href=https://github.com/Smurfgalway/PPI_App/wiki/References> References </a>
+### <a href="https://github.com/Smurfgalway/PPI_App/wiki/References-&-Research"> References </a>
 
 ## Link to my youtube Demo of the project
 
