@@ -1,4 +1,4 @@
-# Profession Practice In IT App
+# Professional Practice In IT App
 
 ## Project Overview 
 
