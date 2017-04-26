@@ -6,12 +6,10 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
+      /* css styling for the map */
       #map {
         height: 100%;
       }
-      /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
         width: 100%;
@@ -76,6 +74,7 @@
           });
         } 
       }
+            // call back function for creating markers in the right places as it is called by the function with the keyword
           function callback(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
@@ -83,7 +82,7 @@
           }
         }
       }
-      // function creates markers of locations matching your nearby search keyword within the radius specified
+      // function creates markers
       function createMarker(place) {
         var placeLoc = place.geometry.location;
         var marker = new google.maps.Marker({
