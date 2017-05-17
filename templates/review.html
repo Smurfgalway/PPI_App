@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+    <!-- calls in style sheet from bootstrap improves the aesthic of the whole webpage -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+    
+<body align="center" background="grey">
+    <h1 class="text-danger" class="display-4">Welcome to the review page please be sure to share you thoughts</h1>
+<div class="well">
+      <!-- is the form that takes in the item and its price and stores it into my database -->
+	<form action="/data" method="POST">
+	  <div class="form-group">
+		<label for="formGroupExampleInput">Add your thoughts on your experience</label>
+        <br>
+		<input type="text" class="form-control" name="User" id="User" placeholder="Enter you name">
+        <br>
+         <input type="text" class="form-control" name="Review" id="Review" placeholder="Your thoughts" step="any">
+	  </div>
+        <button type="submit" class="btn btn-primary">Submit item</button>
+	</form>
+      <!-- this button gets from the flask root in my webapp.py and displays the contents of price of the cart -->
+    <!-- this button gets from the flask root in my webapp.py and displays the contents of the cart -->
+    {% block content%}
+    <form action="/show" method="GET">
+    <div class="form-group"> 
+        <label for="formGroupExampleInput">Click to see reviews</label>
+    </div>
+    <div> <button type="submit" class="btn btn-default">Show reviews</button></div>
+    </form>
+    </br>
+     {% for item in thisdata %}
+    <b>{{item.User}} :</b> <br /> {{item.Review}} <br \> <br>
+    {% endfor %}
+    {% endblock %}
+</div>
+<div>
+ <form action="/">
+            <button type="submit" class="w3-round-large w3-blue w3-button w3-block" > Go home </button>
+        </form>
+</div>
+</body>
+</html>
+<!-- references: bootstrap docs, w3schools, stack overflow, google images-->
