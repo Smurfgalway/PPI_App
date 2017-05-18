@@ -2,7 +2,7 @@
 
 ## Project Overview 
 
-This project is a Geolocation and Information app. Within a 6 mile/10 KM/ 10000 Meter radius it tells you the nearest supports/services for Mental and Sexual Health along with highlighting places you can buy condoms in the same radius. It also has a series of great information on different Mental/Sexual Health serivices in Ireland and helpful links. The aim of this project is to bring awarness to both issues clear up any misconceptions about each and hopefully help erase any stigmas about talking about each and how important it is to take care of each. This project is done using <a href="https://www.python.org/"> Python </a>, HTML, Javascript and Google Maps Apis
+This project is a Geolocation and Information app. Within a 6 mile/10 KM/ 10000 Meter radius it tells you the nearest supports/services for Mental and Sexual Health along with highlighting places you can buy condoms in the same radius. It also has a series of great information on different Mental/Sexual Health serivices in Ireland and helpful links. The aim of this project is to bring awarness to both issues clear up any misconceptions about each and hopefully help erase any stigmas about talking about each and how important it is to take care of each. This project is done using <a href="https://www.python.org/"> Python </a>, HTML, Javascript and Google Maps Apis. I have it hosted on Python anywhere <a href="https://www.pythonanywhere.com"></a> where you can access it through the web without having to install any software. There is a database for user reviews so please do send your feedback.
 
 ## Down below are the links to my documentation detailing the project experience and how run it
 
